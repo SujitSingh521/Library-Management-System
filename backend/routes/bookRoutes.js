@@ -34,7 +34,9 @@ router.delete("/:id", async (req, res) => {
 
 // PATCH
 router.patch("/:id", async (req, res) => {
-  const updated = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  const updated = await Book.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
   await writeBooksToFile();
   res.json(updated);
 });

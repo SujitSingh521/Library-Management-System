@@ -9,10 +9,10 @@ const bookSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ["Available", "Issued"],
-    default: "Available"
+    default: "Available",
   },
   dateOfIssue: Date,
-  returnDate: Date
+  returnDate: Date,
 });
 
 export default mongoose.model("Book", bookSchema);
