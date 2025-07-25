@@ -1,13 +1,16 @@
-const express =require ('express');
-const app =express();
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import bookRoutes from "./routes/bookRoutes.js";
 
-app.get("/",(req,res)=>{
-res.status(200).send('<h1>Welcome to the Backend Server</h1>');
-})
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-const PORT =5000;
+mongoose.connect("mongodb://localhost:27017/library")
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error(err));
 
+app.use("/books", bookRoutes);
 
-app.listen(PORT,()=>{
-    console.log(`server is running on Port ${PORT}`);
-})
+app.listen(5000, () => console.log("✅ Server running on http://localhost:5000"));

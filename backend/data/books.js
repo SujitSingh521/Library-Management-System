@@ -1,0 +1,29 @@
+let booksm =[
+    {
+        id:1,
+        title:"",
+        author:"",
+        category:"",
+        description:"",
+        image:"",
+        price:0,
+    },
+      {
+        id:2,
+        title:"",
+        author:"",
+        category:"",
+        description:"",
+        image:"",
+        price:0,
+    },
+      {
+        id:3,
+        title:"",
+        author:"",
+        category:"",
+        description:"",
+        image:"",
+        price:0,
+    }
+]
