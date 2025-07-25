@@ -68,3 +68,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+<!--📘 Frontend Setup Commands (React + Axios) -->
+
+# 1️⃣ Install create-react-app globally (optional but helpful)
+npm install -g create-react-app
+
+# 2️⃣ Create the frontend app
+npx create-react-app frontend
+
+# 3️⃣ Move into the frontend directory
+cd frontend
+
+# 4️⃣ Install Axios for API calls
+npm install axios
+
+# 5️⃣ (Optional) Reinstall dependencies if needed
+npm install
+
+# 6️⃣ Start the development server
+npm start
