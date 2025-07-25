@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-
 function AddBook() {
   const [book, setBook] = useState({
     title: "",
@@ -27,7 +26,7 @@ function AddBook() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <h2>➕ Add New Book</h2>
+      <h2>Add New Book</h2>
       <input name="title" placeholder="Title" value={book.title} onChange={handleChange} />
       <input name="author" placeholder="Author" value={book.author} onChange={handleChange} />
       <input name="category" placeholder="Category" value={book.category} onChange={handleChange} />

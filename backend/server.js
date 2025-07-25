@@ -7,10 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/library")
-  .then(() => console.log("📦 MongoDB Connected"))
+mongoose
+  .connect("mongodb://localhost:27017/library")
+  .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error(err));
 
 app.use("/books", bookRoutes);
 
-app.listen(5000, () => console.log("✅ Server running at http://localhost:5000"));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(" Server running on http://localhost:PORT"));
