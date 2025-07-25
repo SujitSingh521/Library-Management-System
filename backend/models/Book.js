@@ -4,6 +4,8 @@ const bookSchema = new mongoose.Schema({
   title: String,
   author: String,
   category: String,
+  image: String,
+  price: String,
   status: {
     type: String,
     enum: ["Available", "Issued"],
@@ -13,5 +15,4 @@ const bookSchema = new mongoose.Schema({
   returnDate: Date
 });
 
-const Book = mongoose.model("Book", bookSchema);
-export default Book;
+export default mongoose.model("Book", bookSchema);

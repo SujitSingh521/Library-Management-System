@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+
 function BookList() {
   const [books, setBooks] = useState([]);
   const [filters, setFilters] = useState({ title: "", author: "", category: "", status: "" });
@@ -19,7 +20,7 @@ function BookList() {
     fetchBooks();
   };
 
-  const issueBook = async (id, currentStatus) => {
+  const toggleStatus = async (id, currentStatus) => {
     const updated = {
       status: currentStatus === "Available" ? "Issued" : "Available",
       dateOfIssue: currentStatus === "Available" ? new Date() : null,
@@ -32,7 +33,7 @@ function BookList() {
   return (
     <div>
       <h2>📖 Book List</h2>
-      <div style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+      <div className="filter-box">
         <input placeholder="Search by title" onChange={(e) => setFilters({ ...filters, title: e.target.value })} />
         <input placeholder="Author" onChange={(e) => setFilters({ ...filters, author: e.target.value })} />
         <input placeholder="Category" onChange={(e) => setFilters({ ...filters, category: e.target.value })} />
@@ -43,45 +44,28 @@ function BookList() {
         </select>
       </div>
 
-      <table border="1" cellPadding="10">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Issue Date</th>
-            <th>Return Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {books.length === 0 ? (
-            <tr>
-              <td colSpan="7">No books found</td>
-            </tr>
-          ) : (
-            books.map((book) => (
-              <tr key={book._id}>
-                <td>{book.title}</td>
-                <td>{book.author}</td>
-                <td>{book.category}</td>
-                <td>{book.status}</td>
-                <td>{book.dateOfIssue ? new Date(book.dateOfIssue).toLocaleDateString() : "-"}</td>
-                <td>{book.returnDate ? new Date(book.returnDate).toLocaleDateString() : "-"}</td>
-                <td>
-                  <button onClick={() => issueBook(book._id, book.status)}>
-                    {book.status === "Available" ? "Issue" : "Return"}
-                  </button>
-                  <button onClick={() => deleteBook(book._id)} style={{ marginLeft: "5px" }}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+      <div className="book-grid">
+        {books.length === 0 ? (
+          <p>No books found.</p>
+        ) : (
+          books.map((book) => (
+            <div className="book-card" key={book._id}>
+              <img src={book.image} alt={book.title} />
+              <h3>{book.title}</h3>
+              <p><strong>Author:</strong> {book.author}</p>
+              <p><strong>Category:</strong> {book.category}</p>
+              <p><strong>Price:</strong> ₹{book.price}</p>
+              <p><strong>Status:</strong> {book.status}</p>
+              <div className="actions">
+                <button onClick={() => toggleStatus(book._id, book.status)}>
+                  {book.status === "Available" ? "Issue" : "Return"}
+                </button>
+                <button onClick={() => deleteBook(book._id)}>Delete</button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }

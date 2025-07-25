@@ -1,29 +1,14 @@
 let booksm =[
-    {
-        id:1,
-        title:"",
-        author:"",
-        category:"",
-        description:"",
-        image:"",
-        price:0,
-    },
-      {
-        id:2,
-        title:"",
-        author:"",
-        category:"",
-        description:"",
-        image:"",
-        price:0,
-    },
-      {
-        id:3,
-        title:"",
-        author:"",
-        category:"",
-        description:"",
-        image:"",
-        price:0,
-    }
+  {
+  "_id": "662a4b...",
+  "title": "React Guide",
+  "author": "Sujit Singh",
+  "category": "Web Dev",
+  "image": "https://via.placeholder.com/200",
+  "price": "299",
+  "status": "Available"
+}
+
+    
+      
 ]
